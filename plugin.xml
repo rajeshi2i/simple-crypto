@@ -25,13 +25,23 @@
     <source-file src="src/ios/RNEncryptor.m" />
   </platform>
   <platform name="android">
-    <config-file parent="/*" target="res/xml/config.xml">
-      <feature name="SimpleCrypto">
-        <param name="android-package" value="com.disusered.simplecrypto.SimpleCrypto" />
+    <!-- android-specific elements -->
+    <source-file src="src/android/SimpleCrypto.java" target-dir="src/com/disusered/simplecrypto/SimpleCrypto" />
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="SimpleCrypto" >
+        <param name="android-package" value="com.disusered.simplecrypto.SimpleCrypto"/>
       </feature>
     </config-file>
-    <config-file parent="/*" target="AndroidManifest.xml" />
-    <source-file src="src/android/jncryptor-1.0.1.jar" target-dir="libs"/>
-    <source-file src="src/android/SimpleCrypto.java" target-dir="src/com/disusered/simplecrypto/SimpleCrypto" />
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+      <uses-permission android:name="android.permission.BROADCAST_SMS" />
+      <uses-permission android:name="android.permission.RECEIVE_SMS" />
+      <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+      <uses-permission android:name="android.permission.RECEIVE_MMS" />
+      <uses-permission android:name="android.permission.READ_SMS" />
+      <uses-permission android:name="android.permission.WRITE_SMS" />
+      <uses-permission android:name="android.permission.SEND_SMS" />
+    </config-file>
   </platform>
+
 </plugin>
